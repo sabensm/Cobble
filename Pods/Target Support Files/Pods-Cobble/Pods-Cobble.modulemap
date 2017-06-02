@@ -1,0 +1,6 @@
+framework module Pods_Cobble {
+  umbrella header "Pods-Cobble-umbrella.h"
+
+  export *
+  module * { export * }
+}

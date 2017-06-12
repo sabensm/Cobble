@@ -18,13 +18,5 @@ class UserRecipeFeedVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func signoutButtonTapped(_ sender: Any) {
-        if (self.presentingViewController != nil) {
-            self.dismiss(animated: false, completion: nil)
-        }
-        let _ = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        try! Auth.auth().signOut()
-        print("User is signed out")
-    }
 }
 

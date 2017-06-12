@@ -16,6 +16,7 @@
 		E30348A11EE1D67C00386DF0 /* SFText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E30348A01EE1D67C00386DF0 /* SFText-Regular.otf */; };
 		E30348A31EE1E87700386DF0 /* LoginScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30348A21EE1E87700386DF0 /* LoginScreenVC.swift */; };
 		E30348A51EE1EB8000386DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30348A41EE1EB8000386DF0 /* GoogleService-Info.plist */; };
+		E36F54E51EEE260D005F74B5 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F54E41EEE260D005F74B5 /* SettingsVC.swift */; };
 		E38681391EE1F5BF0090B802 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38681381EE1F5BF0090B802 /* Constants.swift */; };
 		E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		E30348A01EE1D67C00386DF0 /* SFText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFText-Regular.otf"; sourceTree = "<group>"; };
 		E30348A21EE1E87700386DF0 /* LoginScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenVC.swift; sourceTree = "<group>"; };
 		E30348A41EE1EB8000386DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E36F54E41EEE260D005F74B5 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		E38681381EE1F5BF0090B802 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecipeFeedVC.swift; sourceTree = "<group>"; };
 		EE417FCE1B841D7FADE4FAEE /* Pods_Cobble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cobble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,8 +101,6 @@
 				E303489D1EE1CA5800386DF0 /* Util */,
 				E30348941EE1C9FD00386DF0 /* Info.plist */,
 				E30348A41EE1EB8000386DF0 /* GoogleService-Info.plist */,
-				E30348A21EE1E87700386DF0 /* LoginScreenVC.swift */,
-				E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */,
 			);
 			path = Cobble;
 			sourceTree = "<group>";
@@ -131,6 +131,9 @@
 		E38681361EE1F5AA0090B802 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E30348A21EE1E87700386DF0 /* LoginScreenVC.swift */,
+				E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */,
+				E36F54E41EEE260D005F74B5 /* SettingsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */,
 				E30348891EE1C9FD00386DF0 /* AppDelegate.swift in Sources */,
 				E38681391EE1F5BF0090B802 /* Constants.swift in Sources */,
+				E36F54E51EEE260D005F74B5 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

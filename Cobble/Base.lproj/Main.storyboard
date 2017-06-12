@@ -202,6 +202,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AlO-cT-7FD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ww0-6G-XW4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -268,6 +269,9 @@
                                             <constraint firstAttribute="width" constant="67.5" id="sbB-lB-y0D"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="twitterButton"/>
+                                        <connections>
+                                            <action selector="twitterButtonTapped:" destination="JuL-MC-12K" eventType="touchUpInside" id="X9i-tg-hfD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFd-41-qz8">
                                         <rect key="frame" x="235" y="0.0" width="67.5" height="67.5"/>
@@ -276,6 +280,9 @@
                                             <constraint firstAttribute="height" constant="67.5" id="WYN-bO-LZu"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="webButton"/>
+                                        <connections>
+                                            <action selector="webpageButtonTapped:" destination="JuL-MC-12K" eventType="touchUpInside" id="Rgq-v9-D9I"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

@@ -44,25 +44,30 @@
 		<string>Nobile-Bold.ttf</string>
 		<string>SFText-Regular.otf</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb773356739498860</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>773356739498860</string>
-    <key>FacebookDisplayName</key>
-    <string>Cobble</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb773356739498860</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>773356739498860</string>
+	<key>FacebookDisplayName</key>
+	<string>Cobble</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

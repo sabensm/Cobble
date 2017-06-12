@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //setting colors for navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.94, green: 0.33, blue: 0.31, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        //setting status bar color to white
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         FirebaseApp.configure()
         
         //adding FB Login

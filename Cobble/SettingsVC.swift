@@ -34,6 +34,17 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         sendEmail()
     }
     
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+        let vc = LoadFullPageWebviewVC()
+        vc.recievedUrl = "https://twitter.com/espn"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func webpageButtonTapped(_ sender: Any) {
+        let vc = LoadFullPageWebviewVC()
+        vc.recievedUrl = "http://www.espn.com"
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     override func viewDidLoad() {

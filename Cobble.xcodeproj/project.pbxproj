@@ -18,6 +18,8 @@
 		E30348A51EE1EB8000386DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30348A41EE1EB8000386DF0 /* GoogleService-Info.plist */; };
 		E36F54E51EEE260D005F74B5 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F54E41EEE260D005F74B5 /* SettingsVC.swift */; };
 		E36F54E71EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F54E61EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift */; };
+		E36F54E91EEEE68B005F74B5 /* AddRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F54E81EEEE68B005F74B5 /* AddRecipeVC.swift */; };
+		E36F54ED1EEF2A6D005F74B5 /* TextViewStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F54EC1EEF2A6D005F74B5 /* TextViewStyleVC.swift */; };
 		E38681391EE1F5BF0090B802 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38681381EE1F5BF0090B802 /* Constants.swift */; };
 		E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +38,8 @@
 		E30348A41EE1EB8000386DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E36F54E41EEE260D005F74B5 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		E36F54E61EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFullPageWebviewVC.swift; sourceTree = "<group>"; };
+		E36F54E81EEEE68B005F74B5 /* AddRecipeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipeVC.swift; sourceTree = "<group>"; };
+		E36F54EC1EEF2A6D005F74B5 /* TextViewStyleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewStyleVC.swift; sourceTree = "<group>"; };
 		E38681381EE1F5BF0090B802 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecipeFeedVC.swift; sourceTree = "<group>"; };
 		EE417FCE1B841D7FADE4FAEE /* Pods_Cobble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cobble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +96,6 @@
 		E30348871EE1C9FD00386DF0 /* Cobble */ = {
 			isa = PBXGroup;
 			children = (
-				E38681371EE1F5B10090B802 /* Util */,
 				E38681361EE1F5AA0090B802 /* Controller */,
 				E303489C1EE1CA5300386DF0 /* Model */,
 				E303489B1EE1CA4F00386DF0 /* View */,
@@ -110,6 +113,7 @@
 		E303489B1EE1CA4F00386DF0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E36F54EC1EEF2A6D005F74B5 /* TextViewStyleVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -124,6 +128,7 @@
 		E303489D1EE1CA5800386DF0 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E38681381EE1F5BF0090B802 /* Constants.swift */,
 				E303489E1EE1D2F700386DF0 /* Nobile-Bold.ttf */,
 				E30348A01EE1D67C00386DF0 /* SFText-Regular.otf */,
 			);
@@ -137,16 +142,9 @@
 				E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */,
 				E36F54E41EEE260D005F74B5 /* SettingsVC.swift */,
 				E36F54E61EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift */,
+				E36F54E81EEEE68B005F74B5 /* AddRecipeVC.swift */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		E38681371EE1F5B10090B802 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				E38681381EE1F5BF0090B802 /* Constants.swift */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +276,8 @@
 			files = (
 				E30348A31EE1E87700386DF0 /* LoginScreenVC.swift in Sources */,
 				E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */,
+				E36F54ED1EEF2A6D005F74B5 /* TextViewStyleVC.swift in Sources */,
+				E36F54E91EEEE68B005F74B5 /* AddRecipeVC.swift in Sources */,
 				E30348891EE1C9FD00386DF0 /* AppDelegate.swift in Sources */,
 				E38681391EE1F5BF0090B802 /* Constants.swift in Sources */,
 				E36F54E71EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift in Sources */,

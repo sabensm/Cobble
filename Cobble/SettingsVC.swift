@@ -64,6 +64,7 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         composeVC.setToRecipients(["Michael.Sabens@me.com"])
         composeVC.setSubject("Feeback on Cobble App")
         composeVC.setMessageBody("", isHTML: false)
+        composeVC.navigationBar.tintColor = UIColor.white
         //present the view controller
         self.present(composeVC, animated: true, completion: nil)
     }

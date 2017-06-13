@@ -25,7 +25,6 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         imagePicker.modalPresentationStyle = .popover
         present(imagePicker, animated: true, completion: nil)
         imagePicker.popoverPresentationController?.sourceView = sender as? UIView
@@ -55,7 +54,6 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             //TODO
         
         //dismiss View Controller
-        
         _ = navigationController?.popViewController(animated: true)
     }
     

@@ -346,6 +346,9 @@
                                     <constraint firstAttribute="width" constant="55" id="Lxn-yv-Kgv"/>
                                 </constraints>
                                 <state key="normal" title="Remove"/>
+                                <connections>
+                                    <action selector="removeRecipeImageButtonPressed:" destination="hUB-JV-t5o" eventType="touchUpInside" id="ZDB-fv-44V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -388,12 +391,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImageButton" destination="ag8-S9-e4V" id="NNT-wz-cEH"/>
                         <outlet property="recipeImage" destination="XNK-LG-kdw" id="VLS-Tn-gUw"/>
                         <outlet property="recipeIngredients" destination="6RN-U4-LOV" id="by1-zY-RTA"/>
                         <outlet property="recipeInstructions" destination="hF0-RC-Bf2" id="kNv-Rg-UsA"/>
                         <outlet property="recipeName" destination="i9F-x6-ZIF" id="BZW-WN-8TL"/>
                         <outlet property="recipeServes" destination="NHn-fo-OOc" id="bCP-YR-GR5"/>
                         <outlet property="recipeTimeToMake" destination="fyw-Nh-gEQ" id="vW4-Pv-w4v"/>
+                        <outlet property="removeButton" destination="Ml9-b5-QUz" id="ZJY-lg-xNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3CK-L1-5Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>

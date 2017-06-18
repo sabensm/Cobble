@@ -17,10 +17,22 @@ class RecipeCard: UITableViewCell {
     @IBOutlet weak var recipeTime: UILabel!
     @IBOutlet weak var recipeServes: UILabel!
     
+    var recipe: Recipe!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    //configure cell with data from Recipe model
+    
+    func configureCell(recipe: Recipe) {
+        self.recipe = recipe
+        self.recipeName.text = recipe.recipeName.capitalized
+        self.recipeAuthor.text = recipe.recipeAuthor.capitalized
+        self.recipeTime.text = recipe.recipeTime.capitalized
+        self.recipeServes.text = "\(recipe.recipeServes ?? 4)"
     }
 
 }

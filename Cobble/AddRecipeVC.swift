@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var recipeName: UITextField!
     @IBOutlet weak var recipeServes: UITextField!
@@ -18,8 +18,14 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    
     
     let imagePicker = UIImagePickerController()
+    
+    //uipicker stuff
+    let listOfRecipeCategories = ["Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
+    var recipeCategorySelected = ""
     
     @IBAction func addRecipeImageButtonPressed(_ sender: Any) {
         
@@ -44,6 +50,9 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         super.viewDidLoad()
 
         imagePicker.delegate = self
+        categoryPicker.dataSource = self
+        categoryPicker.delegate = self
+        
 
     }
     
@@ -68,6 +77,27 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //boilerplate for UIPicker
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return listOfRecipeCategories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return listOfRecipeCategories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        recipeCategorySelected = listOfRecipeCategories[row]
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    
     
 
 }

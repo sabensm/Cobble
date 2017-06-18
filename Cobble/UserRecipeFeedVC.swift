@@ -16,6 +16,7 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     
     //array of recipe posts that we get from Firebase and store
     var recipesArray = [Recipe]()
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     
     override func viewDidLoad() {
@@ -51,10 +52,17 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let recipe = recipesArray[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "feedItemCell") as? RecipeCard {
-            cell.configureCell(recipe: recipe)
-            return cell
+            if let image = UserRecipeFeedVC.imageCache.object(forKey: recipe.recipeImageURL as NSString) {
+                print("I'm using this field")
+                cell.configureCell(recipe: recipe, image: image)
+            } else {
+                print("Else condition")
+                cell.configureCell(recipe: recipe)
+                return cell
+            }
         }
         return UITableViewCell()
     }

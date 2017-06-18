@@ -55,7 +55,8 @@ class LoginScreenVC: UIViewController {
                 if error == nil {
                     print("User authenticed with Firebase using email and password")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["email": user.email]
+                        self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -64,7 +65,8 @@ class LoginScreenVC: UIViewController {
                         } else {
                             print("Successfully create user in Firebase")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["email": user.email]
+                                self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                             }
                         }
                     })
@@ -82,14 +84,16 @@ class LoginScreenVC: UIViewController {
             } else {
                 print("Successfuly authenticated with Firebase")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["email": user.email]
+                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                 }
                 
             }
         })
     }
     
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        FirebaseDataService.database.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         performSegue(withIdentifier: "goToMain", sender: nil)
     }

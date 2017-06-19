@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RecipeCard: UITableViewCell {
 
@@ -27,12 +28,14 @@ class RecipeCard: UITableViewCell {
     
     //configure cell with data from Recipe model
     
-    func configureCell(recipe: Recipe) {
+    func configureCell(recipe: Recipe, image: UIImage? = nil) {
         self.recipe = recipe
         self.recipeName.text = recipe.recipeName.capitalized
         self.recipeAuthor.text = recipe.recipeAuthor.capitalized
         self.recipeTime.text = recipe.recipeTime.capitalized
         self.recipeServes.text = "\(recipe.recipeServes ?? 4)"
+        self.recipeCategory.image = UIImage(named: recipe.recipeCategory)
+        
     }
 
 }

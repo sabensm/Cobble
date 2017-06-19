@@ -12,5 +12,5 @@ target 'Cobble' do
   pod 'Firebase/Storage'
   pod 'SwiftKeychainWrapper'
   pod 'FBSDKLoginKit'
-
+  pod 'Kingfisher', '~> 3.0'
 end

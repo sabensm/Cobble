@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 let DATABASE_URL = Database.database().reference() // containts the root URL for the database
+let STORAGE_URL = Storage.storage().reference() // contains the root URL for Google Cloud Drive
 
 
 class FirebaseDataService {
@@ -37,4 +38,21 @@ class FirebaseDataService {
         USERS_URL.child(uid).updateChildValues(userData)
     }
     
+}
+
+class FirebaseStorageService {
+    
+    //make class a singleton
+    static let storage = FirebaseStorageService()
+    
+    private var _baseURL = STORAGE_URL
+    private var _getRecipePicturesURL = STORAGE_URL.child("recipe-pictures")
+    
+    var BASE_URL: StorageReference {
+        return _baseURL
+    }
+    
+    var RECIPE_PICTURES_URL: StorageReference {
+        return _getRecipePicturesURL
+    }
 }

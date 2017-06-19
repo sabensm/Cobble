@@ -38,28 +38,28 @@ class RecipeCard: UITableViewCell {
         
         //set image from Firebase Storage that we retreived
         
-        if image != nil { // if true, this means we got an image from local cache
-            self.recipeImage.image = image
-            print(UserRecipeFeedVC.imageCache)
-        } else {
-            let ref = Storage.storage().reference(forURL: recipe.recipeImageURL)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print("Unable to download image from firebase storage")
-                } else {
-                    print("Image downloaded from firebase storage")
-                    //save data to cache
-                    if let imageData = data {
-                        if let image = UIImage(data: imageData) {
-                            self.recipeImage.image = image
-                            let myRecipeImage = recipe.recipeImageURL
-                            UserRecipeFeedVC.imageCache.setObject(image, forKey: myRecipeImage as NSString)
-                        }
-                    }
-                }
-                
-            })
-        }
+//        if image != nil { // if true, this means we got an image from local cache
+//            self.recipeImage.image = image
+//            print(UserRecipeFeedVC.imageCache)
+//        } else {
+//            let ref = Storage.storage().reference(forURL: recipe.recipeImageURL)
+//            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+//                if error != nil {
+//                    print("Unable to download image from firebase storage")
+//                } else {
+//                    print("Image downloaded from firebase storage")
+//                    //save data to cache
+//                    if let imageData = data {
+//                        if let image = UIImage(data: imageData) {
+//                            self.recipeImage.image = image
+//                            let myRecipeImage = recipe.recipeImageURL
+//                            UserRecipeFeedVC.imageCache.setObject(image, forKey: myRecipeImage as NSString)
+//                        }
+//                    }
+//                }
+//                
+//            })
+//        }
         
     }
 

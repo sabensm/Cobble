@@ -9,7 +9,6 @@
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
-import Kingfisher
 
 class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -56,9 +55,6 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
         let recipe = recipesArray[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "feedItemCell") as? RecipeCard {
-            
-            let resource = ImageResource(downloadURL: URL(string: recipe.recipeImageURL)!, cacheKey: recipe.recipeImageURL)
-            cell.recipeImage.kf.setImage(with: resource)
             cell.configureCell(recipe: recipe)
             return cell
             }

@@ -43,6 +43,7 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     @IBAction func removeRecipeImageButtonPressed(_ sender: Any) {
         
         recipeImage.image = #imageLiteral(resourceName: "recipeImagePlaceholder")
+        imageSelected = false
         removeButton.isHidden = true
         addImageButton.isHidden = false
         
@@ -92,8 +93,12 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         }
         
         
-        //dismiss View Controller
-        _ = navigationController?.popViewController(animated: true)
+        //dismiss View Controller -- ultamitely we'll only want to do this upon complettion of Image Upload and Successful post - for now, we'll introduce an artfical delay which will be a little over 1 second - more than enough time for the image to upload on a fast conneciton
+        let when = DispatchTime.now() + 1.3
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

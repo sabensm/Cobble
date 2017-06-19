@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class RecipeCard: UITableViewCell {
 
@@ -29,12 +30,18 @@ class RecipeCard: UITableViewCell {
     //configure cell with data from Recipe model
     
     func configureCell(recipe: Recipe, image: UIImage? = nil) {
+        
         self.recipe = recipe
         self.recipeName.text = recipe.recipeName.capitalized
         self.recipeAuthor.text = recipe.recipeAuthor.capitalized
         self.recipeTime.text = recipe.recipeTime.capitalized
         self.recipeServes.text = "\(recipe.recipeServes ?? 4)"
         self.recipeCategory.image = UIImage(named: recipe.recipeCategory)
+        
+        //configure image using Kingfisher
+        let resource = ImageResource(downloadURL: URL(string: recipe.recipeImageURL)!)
+        recipeImage.kf.indicatorType = .activity
+        recipeImage.kf.setImage(with: resource, options: [.transition(.fade(0.2))])
         
     }
 

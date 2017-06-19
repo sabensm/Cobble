@@ -37,7 +37,6 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
                         let key = snap.key
                         let recipe = Recipe.init(recipeID: key, recipeData: recipesDictionary)
                         self.recipesArray.append(recipe)
-                        print(snap)
                     }
                 }
             }

@@ -17,7 +17,6 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     
     //array of recipe posts that we get from Firebase and store
     var recipesArray = [Recipe]()
-    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     
     override func viewDidLoad() {

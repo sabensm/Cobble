@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -27,6 +28,8 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     let listOfRecipeCategories = ["Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
     var recipeCategorySelected = ""
     
+    var imageSelected = false
+    
     @IBAction func addRecipeImageButtonPressed(_ sender: Any) {
         
         imagePicker.allowsEditing = false
@@ -40,6 +43,7 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     @IBAction func removeRecipeImageButtonPressed(_ sender: Any) {
         
         recipeImage.image = #imageLiteral(resourceName: "recipeImagePlaceholder")
+        imageSelected = false
         removeButton.isHidden = true
         addImageButton.isHidden = false
         
@@ -60,14 +64,46 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         
         //save data to Firebase
         
-            //TODO
+        guard let recipeName = recipeName.text, recipeName != "" else {
+            print("You're missing a recipe name!")
+            return
+        }
+        guard let image = recipeImage.image, imageSelected == true else {
+            print("You're missing an image!")
+            return
+        }
         
-        //dismiss View Controller
-        _ = navigationController?.popViewController(animated: true)
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
+            
+            //unique identifer for images
+            let imageUID = NSUUID().uuidString
+            let imageMetadata = StorageMetadata()
+            imageMetadata.contentType = "image/jpeg"
+            
+            FirebaseStorageService.storage.RECIPE_PICTURES_URL.child(imageUID).putData(imageData, metadata: imageMetadata, completion: { (metadata, error) in
+                if error != nil {
+                    print("Unable to upload image to Firebase Storage")
+                } else {
+                    print("Uploaded image to Firebase Storage")
+                    let downloadURLForUploadedImage = metadata?.downloadURL()?.absoluteString
+                }
+            })
+            
+            
+        }
+        
+        
+        //dismiss View Controller -- ultamitely we'll only want to do this upon complettion of Image Upload and Successful post - for now, we'll introduce an artfical delay which will be a little over 1 second - more than enough time for the image to upload on a fast conneciton
+        let when = DispatchTime.now() + 1.3
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageSelected = true
         recipeImage.image = chosenImage
         addImageButton.isHidden = true
         removeButton.isHidden = false

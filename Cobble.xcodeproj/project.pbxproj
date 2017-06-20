@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A04B8E3B1A47027A29AE4B79 /* Pods_Cobble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE417FCE1B841D7FADE4FAEE /* Pods_Cobble.framework */; };
+		E30230D41EF8C28A00B870E9 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30230D31EF8C28A00B870E9 /* UserServices.swift */; };
 		E30348891EE1C9FD00386DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30348881EE1C9FD00386DF0 /* AppDelegate.swift */; };
 		E303488E1EE1C9FD00386DF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E303488C1EE1C9FD00386DF0 /* Main.storyboard */; };
 		E30348901EE1C9FD00386DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E303488F1EE1C9FD00386DF0 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		547582E28FF1840463494D7B /* Pods-Cobble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cobble.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cobble/Pods-Cobble.release.xcconfig"; sourceTree = "<group>"; };
+		E30230D31EF8C28A00B870E9 /* UserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		E30348851EE1C9FD00386DF0 /* Cobble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cobble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30348881EE1C9FD00386DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E303488D1EE1C9FD00386DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E3082F2D1EF62C9400746E88 /* DataServices.swift */,
+				E30230D31EF8C28A00B870E9 /* UserServices.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				E3082F301EF635F200746E88 /* RecipeModel.swift in Sources */,
 				E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */,
 				E3082F2B1EF6070F00746E88 /* RecipeCard.swift in Sources */,
+				E30230D41EF8C28A00B870E9 /* UserServices.swift in Sources */,
 				E36F54ED1EEF2A6D005F74B5 /* TextViewStyleVC.swift in Sources */,
 				E36F54E91EEEE68B005F74B5 /* AddRecipeVC.swift in Sources */,
 				E3082F2E1EF62C9400746E88 /* DataServices.swift in Sources */,

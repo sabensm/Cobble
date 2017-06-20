@@ -11,6 +11,7 @@ import Firebase
 
 class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
+
     @IBOutlet weak var recipeName: UITextField!
     @IBOutlet weak var recipeServes: UITextField!
     @IBOutlet weak var recipeTimeToMake: UITextField!
@@ -86,12 +87,15 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
                 } else {
                     print("Uploaded image to Firebase Storage")
                     let downloadURLForUploadedImage = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadURLForUploadedImage {
+                        self.newPostToFirebaseDatabase(imageURL: url)
+                    }
+                    
                 }
             })
             
             
         }
-        
         
         //dismiss View Controller -- ultamitely we'll only want to do this upon complettion of Image Upload and Successful post - for now, we'll introduce an artfical delay which will be a little over 1 second - more than enough time for the image to upload on a fast conneciton
         let when = DispatchTime.now() + 1.3
@@ -99,6 +103,26 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             _ = self.navigationController?.popViewController(animated: true)
         }
         
+    }
+    
+    func newPostToFirebaseDatabase(imageURL: String) {
+        
+        let post: Dictionary<String, String> = [
+            "category": recipeCategorySelected.lowercased(),
+            "createdBy": (UserServices.users.currentUser?.email!)!,
+            "imageURL": imageURL,
+            "ingredients": recipeIngredients.text!,
+            "instructions": recipeInstructions.text!,
+            "serves": recipeServes.text!,
+            "time": recipeTimeToMake.text!,
+            "name": recipeName.text!,
+            "userID": (UserServices.users.currentUser?.uid)!
+        ]
+        
+        let postUID = NSUUID().uuidString
+        let firebasePost = FirebaseDataService.database.RECIPES_URL.child(postUID)
+        firebasePost.setValue(post)
+        FirebaseDataService.database.USERS_URL.child((UserServices.users.currentUser?.uid)!).child("posts").updateChildValues([postUID: true])
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

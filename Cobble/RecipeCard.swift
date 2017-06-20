@@ -35,7 +35,7 @@ class RecipeCard: UITableViewCell {
         self.recipeName.text = recipe.recipeName.capitalized
         self.recipeAuthor.text = recipe.recipeAuthor.capitalized
         self.recipeTime.text = recipe.recipeTime.capitalized
-        self.recipeServes.text = "\(recipe.recipeServes ?? 4)"
+        self.recipeServes.text = recipe.recipeServes
         self.recipeCategory.image = UIImage(named: recipe.recipeCategory)
         
         //configure image using Kingfisher

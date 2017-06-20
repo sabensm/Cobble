@@ -559,7 +559,7 @@
                         <outlet property="recipeImage" destination="XNK-LG-kdw" id="VLS-Tn-gUw"/>
                         <outlet property="recipeIngredients" destination="6RN-U4-LOV" id="by1-zY-RTA"/>
                         <outlet property="recipeInstructions" destination="hF0-RC-Bf2" id="kNv-Rg-UsA"/>
-                        <outlet property="recipeName" destination="i9F-x6-ZIF" id="BZW-WN-8TL"/>
+                        <outlet property="recipeName" destination="i9F-x6-ZIF" id="md1-vH-NFU"/>
                         <outlet property="recipeServes" destination="NHn-fo-OOc" id="bCP-YR-GR5"/>
                         <outlet property="recipeTimeToMake" destination="fyw-Nh-gEQ" id="vW4-Pv-w4v"/>
                         <outlet property="removeButton" destination="Ml9-b5-QUz" id="ZJY-lg-xNe"/>

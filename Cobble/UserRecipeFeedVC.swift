@@ -34,7 +34,10 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
                     if let recipesDictionary = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let recipe = Recipe.init(recipeID: key, recipeData: recipesDictionary)
-                        self.recipesArray.append(recipe)
+                        //if statement to only add to array if the user ID in the post is == current user id. 
+                        if recipe.recipeUserID == UserServices.users.currentUser?.uid {
+                            self.recipesArray.append(recipe)
+                        }
                     }
                 }
             }

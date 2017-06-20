@@ -12,11 +12,12 @@ class Recipe {
     
     private var _recipeID: String
     private var _recipeName: String?
-    private var _recipeServes: Int?
+    private var _recipeServes: String?
     private var _recipeTime: String?
     private var _recipeCategory: String?
     private var _recipeImageURL: String?
     private var _recipeAuthor: String?
+    private var _recipeUserID: String?
     
     var recipeID: String {
         return _recipeID
@@ -26,7 +27,7 @@ class Recipe {
         return _recipeName!
     }
     
-    var recipeServes: Int? {
+    var recipeServes: String? {
         return _recipeServes!
     }
     
@@ -46,9 +47,13 @@ class Recipe {
         return _recipeAuthor!
     }
     
+    var recipeUserID: String {
+        return _recipeUserID!
+    }
+    
     //initalize all the variables
     
-    init(recipeID: String, recipeName: String, recipeServes: Int, recipeTime: String, recipeCategory: String, recipeImageURL: String, recipeAuthor: String) {
+    init(recipeID: String, recipeName: String, recipeServes: String, recipeTime: String, recipeCategory: String, recipeImageURL: String, recipeAuthor: String, recipeUserID: String) {
         self._recipeID = recipeID
         self._recipeName = recipeName
         self._recipeServes = recipeServes
@@ -56,6 +61,7 @@ class Recipe {
         self._recipeCategory = recipeCategory
         self._recipeImageURL = recipeImageURL
         self._recipeAuthor = recipeAuthor
+        self._recipeUserID = recipeUserID
     }
     
     //create data and dictionary to store values
@@ -68,7 +74,7 @@ class Recipe {
             self._recipeName = recipeName
         }
         
-        if let recipeServes = recipeData["serves"] as? Int {
+        if let recipeServes = recipeData["serves"] as? String {
             self._recipeServes = recipeServes
         }
         
@@ -86,6 +92,10 @@ class Recipe {
         
         if let recipeAuthor = recipeData["createdBy"] as? String {
             self._recipeAuthor = recipeAuthor
+        }
+        
+        if let recipeUserID = recipeData["userID"] as? String {
+            self._recipeUserID = recipeUserID
         }
         
     }

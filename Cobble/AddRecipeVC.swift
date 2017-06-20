@@ -26,8 +26,8 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     let imagePicker = UIImagePickerController()
     
     //uipicker stuff
-    let listOfRecipeCategories = ["Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
-    var recipeCategorySelected = ""
+    let listOfRecipeCategories = ["Category", "Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
+    var recipeCategorySelected = "other"
     
     var imageSelected = false
     
@@ -156,7 +156,9 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         return 1
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     
 

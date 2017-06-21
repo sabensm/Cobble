@@ -93,9 +93,12 @@ class LoginScreenVC: UIViewController {
     }
     
     func completeSignIn(id: String, userData: Dictionary<String, String>) {
-        FirebaseDataService.database.createFirebaseDBUser(uid: id, userData: userData)
-        KeychainWrapper.standard.set(id, forKey: KEY_UID)
-        performSegue(withIdentifier: "goToMain", sender: nil)
+        FirebaseDataService.database.createFirebaseDBUser(uid: id, userData: userData) //Creating user in firebase
+        KeychainWrapper.standard.set(id, forKey: KEY_UID) // setting the UID for firebase user to our keychain
+        UserServices.users.currentUser = Auth.auth().currentUser // setting the global varialble of current user to the firebase authed user
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        performSegue(withIdentifier: "goToMain", sender: nil) // transitioning to main VC
     }
     
     
@@ -108,8 +111,6 @@ class LoginScreenVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
 }

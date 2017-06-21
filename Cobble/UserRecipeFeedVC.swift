@@ -16,6 +16,7 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     
     //array of recipe posts that we get from Firebase and store
     var recipesArray = [Recipe]()
+    var recipeInformation: Recipe!
     
     
     override func viewDidLoad() {
@@ -23,6 +24,8 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         //setup listener on the database to fetch data whenever there is a change
         FirebaseDataService.database.RECIPES_URL.observe(.value, with: { (snapshot) in
@@ -62,6 +65,25 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
             return cell
             }
             return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        //This code will delete the recipe from the recipes portion of the database.
+        let selectedRecipe = recipesArray[indexPath.row]
+        let recipeToDelete = selectedRecipe.recipeID
+        print(recipeToDelete)
+        FirebaseDataService.database.RECIPES_URL.child(recipeToDelete).removeValue()
+        
+        //This code will delete the reference to the recipe from the users portion of the database.
+        
+        if let currentUser = UserServices.users.currentUser?.uid {
+            FirebaseDataService.database.USERS_URL.child(currentUser).child("posts").child(recipeToDelete).removeValue()
+        }
     }
 
 }

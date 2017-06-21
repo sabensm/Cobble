@@ -22,8 +22,8 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         }
         let _ = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! Auth.auth().signOut()
-        print("User is signed out")
-        
+        UserServices.users.currentUser = nil
+
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: Any) {
@@ -35,6 +35,9 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func twitterButtonTapped(_ sender: Any) {
+        
+        
+        
         let vc = LoadFullPageWebviewVC()
         vc.recievedUrl = "https://twitter.com/espn"
         navigationController?.pushViewController(vc, animated: true)

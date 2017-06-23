@@ -17,12 +17,14 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBAction func signoutButtonTapped(_ sender: Any) {
         
-        if (self.presentingViewController != nil) {
-            self.dismiss(animated: false, completion: nil)
-        }
         let _ = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! Auth.auth().signOut()
         UserServices.users.currentUser = nil
+
+        let isUserLoggedIn = UserServices.users.currentUser?.uid
+        if isUserLoggedIn == nil {
+            performSegue(withIdentifier: "goToLogin", sender: nil)
+        }
 
     }
     

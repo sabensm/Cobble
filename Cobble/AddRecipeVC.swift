@@ -25,6 +25,11 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     let imagePicker = UIImagePickerController()
     
+//    var usersArray = [User]()
+//    var userInformation: User!
+
+    
+    
     //uipicker stuff
     let listOfRecipeCategories = ["Category", "Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
     var recipeCategorySelected = "other"
@@ -57,7 +62,6 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         imagePicker.delegate = self
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
-        
 
     }
     
@@ -109,7 +113,7 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         
         let post: Dictionary<String, String> = [
             "category": recipeCategorySelected.lowercased(),
-            "createdBy": (UserServices.users.currentUser?.email!)!,
+            "createdBy": (UserServices.users.currentUser?.displayName)!,
             "imageURL": imageURL,
             "ingredients": recipeIngredients.text!,
             "instructions": recipeInstructions.text!,
@@ -159,7 +163,5 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    
 
 }

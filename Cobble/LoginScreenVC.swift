@@ -33,6 +33,7 @@ class LoginScreenVC: UIViewController {
             } else {
                 print("Successfully authenticated with Facebook")
                 let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                print(FBSDKProfile.current().firstName)
                 self.firebaseAuth(credential)
             }
         }
@@ -58,18 +59,6 @@ class LoginScreenVC: UIViewController {
                         let userData = ["email": user.email]
                         self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                     }
-                } else {
-                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if error != nil {
-                            print("Unable to authenticate with Firebase using email and password")
-                        } else {
-                            print("Successfully create user in Firebase")
-                            if let user = user {
-                                let userData = ["email": user.email]
-                                self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
-                            }
-                        }
-                    })
                 }
             })
         }
@@ -93,22 +82,25 @@ class LoginScreenVC: UIViewController {
     }
     
     func completeSignIn(id: String, userData: Dictionary<String, String>) {
-        FirebaseDataService.database.createFirebaseDBUser(uid: id, userData: userData) //Creating user in firebase
         KeychainWrapper.standard.set(id, forKey: KEY_UID) // setting the UID for firebase user to our keychain
         UserServices.users.currentUser = Auth.auth().currentUser // setting the global varialble of current user to the firebase authed user
         emailTextField.text = ""
         passwordTextField.text = ""
-        performSegue(withIdentifier: "goToMain", sender: nil) // transitioning to main VC
+        if (self.presentingViewController != nil) {
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
     
     //If user is already logged in, skip the screen
     
-    override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            performSegue(withIdentifier: "goToMain", sender: nil)
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+//            if (self.presentingViewController != nil) {
+//                self.dismiss(animated: false, completion: nil)
+//            }
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

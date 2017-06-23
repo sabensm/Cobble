@@ -18,6 +18,8 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     var recipesArray = [Recipe]()
     var recipeInformation: Recipe!
     
+//    var usersArray = [User]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +28,7 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
         tableView.dataSource = self
         
         tableView.allowsMultipleSelectionDuringEditing = true
-        
-        //setup listener on the database to fetch data whenever there is a change
-        FirebaseDataService.database.RECIPES_URL.observe(.value, with: { (snapshot) in
-            //clear array each time we get new data so we're not duplicating it
-            self.recipesArray = []
-            //breaking out all the data into an individual object
-            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshot {
-                    if let recipesDictionary = snap.value as? Dictionary<String, AnyObject> {
-                        let key = snap.key
-                        let recipe = Recipe.init(recipeID: key, recipeData: recipesDictionary)
-                        //if statement to only add to array if the user ID in the post is == current user id. 
-                        if recipe.recipeUserID == UserServices.users.currentUser?.uid {
-                            self.recipesArray.append(recipe)
-                        }
-                    }
-                }
-            }
-            self.tableView.reloadData()
-        })
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,6 +66,41 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
         
         if let currentUser = UserServices.users.currentUser?.uid {
             FirebaseDataService.database.USERS_URL.child(currentUser).child("posts").child(recipeToDelete).removeValue()
+        }
+    }
+    
+    func downloadData() {
+        
+        //setup listener on the database to fetch data whenever there is a change
+        FirebaseDataService.database.RECIPES_URL.observe(.value, with: { (snapshot) in
+            //clear array each time we get new data so we're not duplicating it
+            self.recipesArray = []
+            //breaking out all the data into an individual object
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    if let recipesDictionary = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let recipe = Recipe.init(recipeID: key, recipeData: recipesDictionary)
+                        //if statement to only add to array if the user ID in the post is == current user id.
+                        if recipe.recipeUserID == UserServices.users.currentUser?.uid {
+                            self.recipesArray.append(recipe)
+                        }
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        })
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let isUserLoggedIn = UserServices.users.currentUser?.uid
+        
+        if isUserLoggedIn == nil {
+            performSegue(withIdentifier: "goToLogin", sender: nil)
+        } else {
+            downloadData()
         }
     }
 

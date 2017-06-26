@@ -25,10 +25,7 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     let imagePicker = UIImagePickerController()
     
-//    var usersArray = [User]()
-//    var userInformation: User!
 
-    
     
     //uipicker stuff
     let listOfRecipeCategories = ["Category", "Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
@@ -111,16 +108,18 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     func newPostToFirebaseDatabase(imageURL: String) {
         
-        let post: Dictionary<String, String> = [
-            "category": recipeCategorySelected.lowercased(),
-            "createdBy": (UserServices.users.currentUser?.displayName)!,
-            "imageURL": imageURL,
-            "ingredients": recipeIngredients.text!,
-            "instructions": recipeInstructions.text!,
-            "serves": recipeServes.text!,
-            "time": recipeTimeToMake.text!,
-            "name": recipeName.text!,
-            "userID": (UserServices.users.currentUser?.uid)!
+        let post: Dictionary<String, AnyObject> = [
+            "category": recipeCategorySelected.lowercased() as AnyObject,
+            "createdBy": (UserServices.users.currentUser?.displayName)! as AnyObject,
+            "imageURL": imageURL as AnyObject,
+            "ingredients": recipeIngredients.text! as AnyObject,
+            "instructions": recipeInstructions.text! as AnyObject,
+            "serves": recipeServes.text! as AnyObject,
+            "time": recipeTimeToMake.text! as AnyObject,
+            "name": recipeName.text! as AnyObject,
+            "userID": (UserServices.users.currentUser?.uid)! as AnyObject,
+            "timestamp": TIMESTAMP as AnyObject,
+            "isPublic": true as AnyObject // TODO - this will need to get the value of the switch an
         ]
         
         let postUID = NSUUID().uuidString

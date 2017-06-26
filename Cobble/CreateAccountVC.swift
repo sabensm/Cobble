@@ -41,9 +41,7 @@ class CreateAccountVC: UIViewController {
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         
-        if (self.presentingViewController != nil) {
-            _ = self.navigationController?.popViewController(animated: true)
-        }
+        self.dismiss(animated: false, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -64,5 +62,10 @@ class CreateAccountVC: UIViewController {
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil) //dismissing all VC's to get back to root.
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     
 }

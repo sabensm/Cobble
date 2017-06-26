@@ -13,13 +13,10 @@ import SwiftKeychainWrapper
 
 class LoginScreenVC: UIViewController {
 
-    //E-mail and Password Text Field Outlets
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    
-    //Facebook Login
+
     
     @IBAction func facebookButtonTapped(_ sender: Any) {
         //Authenticate with Facebook to allow app to get info from FB to usein app
@@ -40,14 +37,10 @@ class LoginScreenVC: UIViewController {
     }
     
     
-    //Twitter Login
-    
-    
     @IBAction func twitterButtonTapped(_ sender: Any) {
+        //TODO auth with twitter
     }
     
-    
-    //Email Login
     
     @IBAction func emailButtonTapped(_ sender: Any) {
         //check to make sure we have text in the email and password fields
@@ -91,16 +84,6 @@ class LoginScreenVC: UIViewController {
         }
     }
     
-    
-    //If user is already logged in, skip the screen
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-//            if (self.presentingViewController != nil) {
-//                self.dismiss(animated: false, completion: nil)
-//            }
-//        }
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

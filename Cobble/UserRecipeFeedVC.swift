@@ -18,9 +18,6 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     var recipesArray = [Recipe]()
     var recipeInformation: Recipe!
     
-//    var usersArray = [User]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +37,7 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         let recipe = recipesArray[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "feedItemCell") as? RecipeCard {
@@ -72,7 +69,7 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
     func downloadData() {
         
         //setup listener on the database to fetch data whenever there is a change
-        FirebaseDataService.database.RECIPES_URL.observe(.value, with: { (snapshot) in
+        FirebaseDataService.database.RECIPES_URL.queryOrdered(byChild: "userID").queryEqual(toValue: UserServices.users.currentUser?.uid).observe(.value, with: { (snapshot) in
             //clear array each time we get new data so we're not duplicating it
             self.recipesArray = []
             //breaking out all the data into an individual object
@@ -81,16 +78,12 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
                     if let recipesDictionary = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let recipe = Recipe.init(recipeID: key, recipeData: recipesDictionary)
-                        //if statement to only add to array if the user ID in the post is == current user id.
-                        if recipe.recipeUserID == UserServices.users.currentUser?.uid {
-                            self.recipesArray.append(recipe)
-                        }
+                        self.recipesArray.append(recipe)
                     }
                 }
             }
             self.tableView.reloadData()
         })
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +95,11 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
         } else {
             downloadData()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        FirebaseDataService.database.RECIPES_URL.removeAllObservers()
     }
 
 }

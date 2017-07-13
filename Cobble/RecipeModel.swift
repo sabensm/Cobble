@@ -18,6 +18,8 @@ class Recipe {
     private var _recipeImageURL: String?
     private var _recipeAuthor: String?
     private var _recipeUserID: String?
+    private var _recipeIngredients: String?
+    private var _recipeInstructions: String?
     
     var recipeID: String {
         return _recipeID
@@ -51,9 +53,17 @@ class Recipe {
         return _recipeUserID!
     }
     
+    var recipeIngredients: String {
+        return _recipeIngredients!
+    }
+    
+    var recipeInstructions: String {
+        return _recipeInstructions!
+    }
+    
     //initalize all the variables
     
-    init(recipeID: String, recipeName: String, recipeServes: String, recipeTime: String, recipeCategory: String, recipeImageURL: String, recipeAuthor: String, recipeUserID: String) {
+    init(recipeID: String, recipeName: String, recipeServes: String, recipeTime: String, recipeCategory: String, recipeImageURL: String, recipeAuthor: String, recipeUserID: String, recipeIngredients: String, recipeInstructions: String) {
         self._recipeID = recipeID
         self._recipeName = recipeName
         self._recipeServes = recipeServes
@@ -62,6 +72,8 @@ class Recipe {
         self._recipeImageURL = recipeImageURL
         self._recipeAuthor = recipeAuthor
         self._recipeUserID = recipeUserID
+        self._recipeIngredients = recipeIngredients
+        self._recipeInstructions = recipeInstructions
     }
     
     //create data and dictionary to store values
@@ -96,6 +108,14 @@ class Recipe {
         
         if let recipeUserID = recipeData["userID"] as? String {
             self._recipeUserID = recipeUserID
+        }
+        
+        if let recipeIngredients = recipeData["ingredients"] as? String {
+            self._recipeIngredients = recipeIngredients
+        }
+        
+        if let recipeInstructions = recipeData["instructions"] as? String {
+            self._recipeInstructions = recipeInstructions
         }
         
     }

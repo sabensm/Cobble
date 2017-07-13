@@ -66,6 +66,16 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? RecipeViewVC {
+            destination.recipeName = recipesArray[tableView.indexPathForSelectedRow!.row].recipeName
+            destination.recipeAuthorName = recipesArray[tableView.indexPathForSelectedRow!.row].recipeAuthor
+            destination.recipeImageURL = recipesArray[tableView.indexPathForSelectedRow!.row].recipeImageURL
+            destination.recipeIngredients = recipesArray[tableView.indexPathForSelectedRow!.row].recipeIngredients
+            destination.recipeInstructions = recipesArray[tableView.indexPathForSelectedRow!.row].recipeInstructions
+        }
+    }
+    
     func downloadData() {
         
         //setup listener on the database to fetch data whenever there is a change

@@ -119,7 +119,7 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             "name": recipeName.text! as AnyObject,
             "userID": (UserServices.users.currentUser?.uid)! as AnyObject,
             "timestamp": TIMESTAMP as AnyObject,
-            "isPublic": true as AnyObject // TODO - this will need to get the value of the switch an
+            "isPublic": true as AnyObject // TODO - this will need to get the value of the switch and update the post metadata as either true or false depending on the value. 
         ]
         
         let postUID = NSUUID().uuidString

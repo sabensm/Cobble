@@ -13,4 +13,5 @@ target 'Cobble' do
   pod 'SwiftKeychainWrapper'
   pod 'FBSDKLoginKit'
   pod 'Kingfisher', '~> 3.0'
+  pod 'DZNEmptyDataSet'
 end

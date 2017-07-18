@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AlO-cT-7FD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AlO-cT-7FD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -810,7 +810,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Must be 8 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skD-Ud-d5C">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Must be 6 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skD-Ud-d5C">
                                         <rect key="frame" x="116" y="0.0" width="243" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1054,7 +1054,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4PC-eJ-Rcu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="X75-bc-QwB"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tth-rY-mvK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tth-rY-mvK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1073,7 +1073,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="djb-oq-l36" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Feed" image="feed" selectedImage="feed" id="0dq-lg-CEu"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jbm-aL-nil">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jbm-aL-nil">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1097,7 +1097,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CZD-L8-Xfd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Groups" image="groups" selectedImage="groups" id="Sf2-Yi-u26"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qvz-Gm-skh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvz-Gm-skh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

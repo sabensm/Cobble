@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, AlertController {
 
 
     @IBOutlet weak var recipeName: UITextField!
@@ -24,8 +24,6 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     
     let imagePicker = UIImagePickerController()
-    
-
     
     //uipicker stuff
     let listOfRecipeCategories = ["Category", "Beef", "Chicken", "Turkey", "Pasta", "Mexican", "Pizza", "Seafood", "Vegetarian", "Dessert", "Breakfast", "Other" ]
@@ -66,12 +64,34 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         
         //save data to Firebase
         
+        let errorMessageTitle = "Error Saving Recipe"
+        
         guard let recipeName = recipeName.text, recipeName != "" else {
-            print("You're missing a recipe name!")
+            showAlert(title: errorMessageTitle, message: "Please name the recipe")
             return
         }
         guard let image = recipeImage.image, imageSelected == true else {
-            print("You're missing an image!")
+            showAlert(title: errorMessageTitle, message: "Please add an image to this post so people can see what the recipe looks like!")
+            return
+        }
+        
+        guard let serves = recipeServes.text, serves != "" else {
+            showAlert(title: errorMessageTitle, message: "Please add the number of servings this recipe yeilds")
+            return
+        }
+        
+        guard let time = recipeTimeToMake.text, time != "" else {
+            showAlert(title: errorMessageTitle, message: "Please add how long it takes to make this recipe")
+            return
+        }
+        
+        guard let ingredients = recipeIngredients.text, ingredients != "" else {
+            showAlert(title: errorMessageTitle, message: "Please add the ingredients for this recipe")
+            return
+        }
+        
+        guard let instructions = recipeInstructions.text, instructions != "" else {
+            showAlert(title: errorMessageTitle, message: "Please add the steps to prepare the recipe")
             return
         }
         
@@ -84,9 +104,8 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             
             FirebaseStorageService.storage.RECIPE_PICTURES_URL.child(imageUID).putData(imageData, metadata: imageMetadata, completion: { (metadata, error) in
                 if error != nil {
-                    print("Unable to upload image to Firebase Storage")
+                    self.showAlert(title: "Server Error", message: "Unable to upload image. Please try again. If the problem persists, please contact us")
                 } else {
-                    print("Uploaded image to Firebase Storage")
                     let downloadURLForUploadedImage = metadata?.downloadURL()?.absoluteString
                     if let url = downloadURLForUploadedImage {
                         self.newPostToFirebaseDatabase(imageURL: url)
@@ -94,8 +113,6 @@ class AddRecipeVC: UIViewController, UINavigationControllerDelegate, UIImagePick
                     
                 }
             })
-            
-            
         }
         
         //dismiss View Controller -- ultamitely we'll only want to do this upon complettion of Image Upload and Successful post - for now, we'll introduce an artfical delay which will be a little over 1 second - more than enough time for the image to upload on a fast conneciton

@@ -28,6 +28,7 @@
 		E38681391EE1F5BF0090B802 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38681381EE1F5BF0090B802 /* Constants.swift */; };
 		E386813B1EE1F6B50090B802 /* UserRecipeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */; };
 		E3D68A7D1F016EB700A3AD30 /* RecipeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D68A7C1F016EB700A3AD30 /* RecipeViewVC.swift */; };
+		E3DF86CD1F1D5D1900F641EE /* AlertsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF86CC1F1D5D1900F641EE /* AlertsServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E38681381EE1F5BF0090B802 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E386813A1EE1F6B50090B802 /* UserRecipeFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecipeFeedVC.swift; sourceTree = "<group>"; };
 		E3D68A7C1F016EB700A3AD30 /* RecipeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewVC.swift; sourceTree = "<group>"; };
+		E3DF86CC1F1D5D1900F641EE /* AlertsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsServices.swift; sourceTree = "<group>"; };
 		EE417FCE1B841D7FADE4FAEE /* Pods_Cobble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cobble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD45F9F0C1374D26324A887E /* Pods-Cobble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cobble.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cobble/Pods-Cobble.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			children = (
 				E3082F2D1EF62C9400746E88 /* DataServices.swift */,
 				E30230D31EF8C28A00B870E9 /* UserServices.swift */,
+				E3DF86CC1F1D5D1900F641EE /* AlertsServices.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				E3082F2E1EF62C9400746E88 /* DataServices.swift in Sources */,
 				E30348891EE1C9FD00386DF0 /* AppDelegate.swift in Sources */,
 				E38681391EE1F5BF0090B802 /* Constants.swift in Sources */,
+				E3DF86CD1F1D5D1900F641EE /* AlertsServices.swift in Sources */,
 				E3D68A7D1F016EB700A3AD30 /* RecipeViewVC.swift in Sources */,
 				E36F54E71EEEA40B005F74B5 /* LoadFullPageWebviewVC.swift in Sources */,
 				E36F54E51EEE260D005F74B5 /* SettingsVC.swift in Sources */,

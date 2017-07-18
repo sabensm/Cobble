@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
 
-class LoginScreenVC: UIViewController {
+class LoginScreenVC: UIViewController, AlertController {
 
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -44,10 +44,17 @@ class LoginScreenVC: UIViewController {
     
     @IBAction func emailButtonTapped(_ sender: Any) {
         //check to make sure we have text in the email and password fields
-        if let email = emailTextField.text, let password = passwordTextField.text {
+        
+        guard let email = emailTextField.text, email.isValidEmail() else {
+            showAlertInModal(title: "Invalid E-mail", message: "Please enter a valid e-mail address")
+            return
+        }
+        
+        if let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                    print("User authenticed with Firebase using email and password")
+                if error != nil {
+                    self.showAlertInModal(title: "Login Error", message: "Please check your password is correct and try again.")
+                } else {
                     if let user = user {
                         let userData = ["email": user.email]
                         self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
@@ -62,9 +69,8 @@ class LoginScreenVC: UIViewController {
     func firebaseAuth(_ credential: AuthCredential) {
         Auth.auth().signIn(with: credential, completion: { (user, error) in
             if error != nil {
-                print("Unable to authenticate with Firebase")
+            self.showAlertInModal(title: "Login Error", message: "Please check your username and password are correct and try again. If you forgot them, use the Forgot password button")
             } else {
-                print("Successfuly authenticated with Firebase")
                 if let user = user {
                     let userData = ["email": user.email]
                     self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)

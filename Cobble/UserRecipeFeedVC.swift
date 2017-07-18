@@ -9,8 +9,9 @@
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
+import DZNEmptyDataSet
 
-class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +24,9 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
         
         tableView.allowsMultipleSelectionDuringEditing = true
 
@@ -94,6 +98,20 @@ class UserRecipeFeedVC: UIViewController, UITableViewDataSource, UITableViewDele
             }
             self.tableView.reloadData()
         })
+    }
+    
+    //Add title for empty dataset
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No Recipes"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    //Add description/subtitle on empty dataset
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Tap the plus button above to add a new recipe"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
     override func viewDidAppear(_ animated: Bool) {
